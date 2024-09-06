@@ -1,0 +1,89 @@
+create database factory;
+use factory;
+create table employee
+(EMP_ID int not NULL Primary key,
+FIRST_NAME varchar(20),
+LAST_NAME varchar(20),
+GENDER char(1),
+SALARY int,
+DEPARTMENT varchar(20));
+
+insert into employee values(101, 'Monika', 'Arora', "F", 100000, 'HR'),
+(102, 'Niharika', 'Verma', "F", 80000, 'Admin'),
+(103, 'Vishal', 'Singhal', "M", 300000, 'HR'),
+(104, 'Amitabh', 'Singh', "M", 500000, 'Admin'),
+(105, 'Vivek', 'Bansal', "M", 500000, 'Admin'),
+(106, 'Vipul', 'Singhal', "M", 300000, 'HR');
+
+#1
+select FIRST_NAME as 'EMPLOYEE_NAME'
+from employee
+where FIRST_NAME like 'V%';
+
+#2
+select *
+from employee 
+where DATE like "_____11%";
+
+#3
+select distinct DEPARTMENT
+from employee
+where DEPARTMENT is not NULL;
+
+#4
+select *
+from employee
+where DEPARTMENT is NULL;
+
+#5
+select position('a' in FIRST_NAME)
+from employee
+where FIRST_NAME = "Amitabh";
+
+#6
+select concat(FIRST_NAME, " " ,LAST_NAME) as "EMPLOYEE_NAME" 
+from employee;
+
+#8
+select *
+from employee
+order by DEPARTMENT desc, FIRST_NAME;
+
+#9
+select *
+from employee
+where SALARY > 100000 and SALARY < 500000;
+
+#10
+select department, max(SALARY), min(SALARY), avg(SALARY)
+from employee
+group by department;
+
+#11
+select count(SALARY) as "SALARY"
+from employee
+where DEPARTMENT = "Admin";
+
+#12
+select DEPARTMENT, count(EMP_ID)
+from employee
+group by department
+order by SALARY desc;
+
+#13
+select FIRST_NAME, SALARY
+from employee
+order by SALARY desc limit 1 offset 1;
+
+#15
+select DEPARTMENT
+from employee
+group by DEPARTMENT
+having count(EMP_ID) < 2;
+
+#16
+select FIRST_NAME, SALARY, DEPARTMENT
+from employee
+where SALARY in (select max(SALARY) from employee group by DEPARTMENT);
+
+#17

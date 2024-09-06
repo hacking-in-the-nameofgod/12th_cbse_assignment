@@ -1,0 +1,27 @@
+create database office;
+USE office;
+create table employee (EMP_ID integer not NULL PRIMARY KEY, FIRST_NAME VARCHAR(20) not NULL, LAST_NAME VARCHAR(20), GENDER VARCHAR(1), SALARY INTEGER, JOINING_DATE DATE, DEPARTMENT VARCHAR(20));
+
+INSERT into employee VALUES 
+(101,"Monica", "Arora", "F", 100000, 2020-2-20, "HR"),
+(102,"Niharika", "Verma", "F", 80000, 2020-6-11, "Admin"),
+(103,"Vishal", "Singhal", "M", 300000, 2019-11-22, "HR"),
+(104,"Amitabh", "Singh", "M", 500000, 2020-12-19, "Admin"),
+(105,"Vivek", "Bansal", "M", 500000, 2019-6-11, "Admin"),
+(106,"Vipul", "Diwan", "M", 200000, 2021-11-14, NULL),
+(107,"Rahul", "Kumar", "M", 75000, 2019-1-2, "Account"),
+(108,"Geetika", "Chauhan", "F", 90000, 2019-11-4, "Admin"),
+(109,"Vishal", "Agrawal", "M", 85000, 2020-9-17, NULL);
+
+
+describe employee;
+create table job (E_ID int not NULL PRIMARY KEY, EMPLOYEE_TITLE VARCHAR(20) not NULL, Promotion_Date DATE)
+
+insert into employee values (101, "Manager", 2021-2-20),
+(102, "Executive", 2021-11-6),
+(108, "Executive", 2022-11-6),
+(105, "Manager", 2021-12-10),
+(104, "Asst. Manager", 2021-2-20),
+(107, "Executive", 2021-2-20),
+(106, "Lead", 2021-2-20),
+(103, "Lead", 2021-2-20);
